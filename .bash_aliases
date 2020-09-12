@@ -1,7 +1,7 @@
 
-###############################################################################
-### Append this to your existing ~/.bash_aliases file; create one if needed ###
-###############################################################################
+######################################################################################################
+### Append this to your existing ~/.bash_aliases file; create one in your home directory if needed ###
+######################################################################################################
 
 # Dependencies: conda
 # See the scripts folder in this repo for an Ubuntu install script link to Anaconda's instructions
