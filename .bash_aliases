@@ -8,14 +8,18 @@
 
 
 # Server Connects #
-###################
+# Use these blocks as examples to add quick connects to your system. # 
+######################################################################
 
 ## SERVER 1
+### Change the part after the equal's sign to your server's username.
 user=your_ssh_username
-### Change this to your server's IP address
+### Replace this empty IP with your server's IP address.
 ip=0.0.0.0
-### If you only have one server, use this to connect to it by typing "srv" from a bash terminal.  
+### Assuming you've followed the previous steps, you'll be able to connect to your server by typing `srv` from a bash terminal.  
 alias srv="ssh $user@$ip"
+
+## NOTE: after modifying this file to suit your needs, don't forget to reload your terminal so the correct action takes place 
 
 ## SERVER 2
 kfuser=kf
@@ -40,13 +44,14 @@ alias distro="lsb_release -cs"
 
 ## ls & clear 
 alias l="ls -lah"
-alias c=clear
+alias c="clear"
 alias cl="clear && ls -lah"
 alias lm="ls -l | more" 
 
 ## Alias Creation Helpers
-alias alsadd='"echo $1 >> ~/.bash_aliases"'
+### Edit this file
 alias alsmod="nano ~/.bash_aliases"
+### Search for any word or quoted phrase in this file
 alias alsfind="cat ~/.bash_aliases | grep -i $1"
 
 ## Apt
@@ -127,7 +132,6 @@ alias passgen="cat /dev/urandom | tr -dc 'a-zA-Z0-9!@#*' | fold -w 32 | head -n 
 ## Script directory jumps; these will only work if you have the same file structure as me, but you can update the directory to something that exists on your system.
 alias scriptmode="cd /home/code/scripts && cl"
 alias bashscript="cd ~/code/scripts/bash && cl"
-alias greet="~/code/scripts/greetings && cl"
 
 ## Code Mode (no vm)
 alias codemode="cd ~/code && cl"
@@ -142,7 +146,7 @@ alias jupyter-examples="cd /home/code/jupyter/extension-examples && conda activa
 alias pytask="cd /home/code/apps/pytask && conda activate pytask_env && cl"
 
 ### Library
-alias readingrainbow="cd ~/library"
+alias lib="cd ~/library"
 
 ### Jump to my git repos
 alias repos="cd ~/repos && cl"
