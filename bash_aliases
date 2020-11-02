@@ -8,18 +8,14 @@
 
 
 # Server Connects #
-# Use these blocks as examples to add quick connects to your system. # 
-######################################################################
+###################
 
 ## SERVER 1
-### Change the part after the equal's sign to your server's username.
 user=your_ssh_username
-### Replace this empty IP with your server's IP address.
+### Change this to your server's IP address
 ip=0.0.0.0
-### Assuming you've followed the previous steps, you'll be able to connect to your server by typing `srv` from a bash terminal.  
+### If you only have one server, use this to connect to it by typing "srv" from a bash terminal.  
 alias srv="ssh $user@$ip"
-
-## NOTE: after modifying this file to suit your needs, don't forget to reload your terminal so the correct action takes place 
 
 ## SERVER 2
 kfuser=root
@@ -55,9 +51,8 @@ alias cl="clear && ls -lah"
 alias lm="ls -l | more" 
 
 ## Alias Creation Helpers
-### Edit this file
+alias alsadd='"echo $1 >> ~/.bash_aliases"'
 alias alsmod="nano ~/.bash_aliases"
-### Search for any word or quoted phrase in this file
 alias alsfind="cat ~/.bash_aliases | grep -i $1"
 
 ## Apt
@@ -141,14 +136,9 @@ alias lstty="dmesg | grep tty"
 ###################################################
 
 ## Script directory jumps; these will only work if you have the same file structure as me, but you can update the directory to something that exists on your system.
-<<<<<<< HEAD
 alias scriptmode="cd /mnt/phoenix/code/scripts && clear && ls -lah"
 alias bashscript="cd /mnt/phoenix/code/scripts/bash && clear && ls -lah"
 alias greet="/mnt/phoenix/code/scripts/greetings && clear && ls -lah"
-=======
-alias scriptmode="cd /home/code/scripts && cl"
-alias bashscript="cd ~/code/scripts/bash && cl"
->>>>>>> 7d1f56b7dc6fc5efbe65956efda2cf25c32af693
 
 ## Code Mode (no vm)
 alias codemode="cd /mnt/phoenix/code && clear && ls -lah"
@@ -163,11 +153,7 @@ alias jupytergo="cd /mnt/phoenix/library/writing/jupyter-Notebooks && conda acti
 alias pytask="cd /mnt/phoenix/code/apps/pytask && conda activate pytask_env && clear && ls -lah"
 
 ### Library
-<<<<<<< HEAD
 alias lib="cd /mnt/phoenix/library"
-=======
-alias lib="cd ~/library"
->>>>>>> 7d1f56b7dc6fc5efbe65956efda2cf25c32af693
 
 ### Jump to my git repos
 alias repos="cd /mnt/phoenix/library/repos && clear && ls -lah"
