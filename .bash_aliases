@@ -18,11 +18,17 @@ ip=0.0.0.0
 alias srv="ssh $user@$ip"
 
 ## SERVER 2
-kfuser=kf
+kfuser=root
 kfip=0.0.0.0
 alias kfsrv="ssh $kfuser@$kfip"
+
+## SERVER 3
+knox_user=dad
+knox_ip=10.0.0.34
+alias knox="ssh $knox_user@$knox_ip"
+
 ### Jump to local directory for server development and activate server dev environment with conda
-alias userdev='cd /home/clients/kf/klfweb_dev/kfdev && conda activate kfdev && cl'
+#alias userdev='cd /home/clients/kf/klfweb_dev/kfdev && conda activate kfdev && clear && ls -lah'
 
 # CL TIMESAVERS #
 #################
@@ -40,7 +46,7 @@ alias distro="lsb_release -cs"
 
 ## ls & clear 
 alias l="ls -lah"
-alias c=clear
+alias c="clear"
 alias cl="clear && ls -lah"
 alias lm="ls -l | more" 
 
@@ -57,9 +63,8 @@ alias aptit="sudo apt install"
 alias aptfind="apt search"
 
 ## Conda
-alias condup='conda update conda -y'
-alias condenvs="conda env list"
-alias namedenv="conda create -n $1"
+#alias condup='conda update conda -y'
+#alias mkenv="conda create -n $1"
 
 ## Django
 alias runsrv="python3 -m manage.py runserver"
@@ -72,7 +77,7 @@ alias docker="sudo docker"
 alias dc="docker-compose"
 
 # this prints out a quick reference from the terminal
-alias dcpg="cat ~/code/scripts/docker/stack.yml"
+alias dcpg="cat /mnt/phoenix/code/scripts/docker/stack.yml"
 
 ## Docker-machine
 alias dm='docker-machine'
@@ -84,7 +89,7 @@ alias dc='doctl'
 ### create a repository
 alias gitwork='git init . && touch README && git add -A && git commit -m "working repo created" && git remote add origin $1 && git put -u origin master'
 alias cln="git clone"
-alias gitscript="cd ~/code/scripts/git && cl"
+alias gitscript="cd /mnt/phoenix/code/scripts/git && clear && ls -lah"
 
 ## Gogh
 ### Install Color Themes for Bash
@@ -116,43 +121,70 @@ alias lskeys="cat ~/.ssh/*.pub"
 alias sshadd="scp-copy-id $1"
 
 ## Password Management
-### Show Password Generation Options
-alias mkpass="cat ~/code/scripts/bash/bash.generate.random.alphanumeric.string.sh"
+# Show Password Generation Options
+alias mkpass="cat /mnt/phoenix/code/scripts/bash/bash.generate.random.alphanumeric.string.sh"
 alias passgen="cat /dev/urandom | tr -dc 'a-zA-Z0-9!@#*' | fold -w 32 | head -n 1"
 
+## TTY Connections
+### connect using tio:
+# tio /dev/ttyUSB0
+
+### Find Serial Port
+alias lstty="dmesg | grep tty"
 
 # JUMP TO WORKING DIR; ACTIVATE VM; LIST CONTENTS #
 ###################################################
 
 ## Script directory jumps; these will only work if you have the same file structure as me, but you can update the directory to something that exists on your system.
-alias scriptmode="cd /home/code/scripts && cl"
-alias bashscript="cd ~/code/scripts/bash && cl"
-alias greet="~/code/scripts/greetings && cl"
+alias scriptmode="cd /mnt/phoenix/code/scripts && clear && ls -lah"
+alias bashscript="cd /mnt/phoenix/code/scripts/bash && clear && ls -lah"
+alias greet="/mnt/phoenix/code/scripts/greetings && clear && ls -lah"
 
 ## Code Mode (no vm)
-alias codemode="cd ~/code && cl"
+alias codemode="cd /mnt/phoenix/code && clear && ls -lah"
 
 ## Like codemode, with updates for pip and conda
-alias codeup="cd ~/code && up && pipup && condup && cl"
+alias codeup="cd /mnt/phoenix/code && up && pipup && clear && ls -lah"
 
-### Check out jupyter examples
-alias jupyter-examples="cd /home/code/jupyter/extension-examples && conda activate data_science_env && cl"
+### Get to work in Jupyter Lab
+alias jupytergo="cd /mnt/phoenix/library/writing/jupyter-Notebooks && conda activate top-secret && clear && jupyter-lab ."
 
 ### Pytask
-alias pytask="cd /home/code/apps/pytask && conda activate pytask_env && cl"
+alias pytask="cd /mnt/phoenix/code/apps/pytask && conda activate pytask_env && clear && ls -lah"
 
 ### Library
-alias readingrainbow="cd ~/library"
+alias lib="cd /mnt/phoenix/library"
 
 ### Jump to my git repos
-alias repos="cd ~/repos && cl"
+alias repos="cd /mnt/phoenix/library/repos && clear && ls -lah"
 
 ### Data warehouse
-alias datamart="cd ~/library/data && cl"
+alias bigdata="cd /mnt/phoenix/library/data && clear && ls -lah"
 
 ### Materials data warehouse
-alias data-materials="cd ~/library/data/materials && cl"
+alias data-materials="cd /mnt/phoenix/library/data/materials && clear && ls -lah"
 
 ## Open vs-code cheatsheet
 alias codecheats="/home/$USER/library/cheatsheets/vs-code/keyboard-shortcuts-linux.pdf"
 
+## scriptmode
+alias scriptmode="cd /mnt/phoenix/code/scripts/ && clear && ls -lah"
+
+## esp32
+alias esp32cam="cd /mnt/phoenix/code/esp32cam && conda activate esp32 && clear && idfenv && ls -lah"
+## Espressif IDF Connect
+
+### Activate espressif-idf env
+alias idfenv='. /home/biggus-kickus/code/esp32cam/esp-idf/export.sh'
+
+## Show current distro + release info
+alias distro="lsb_release -a"
+
+## Free Code Camp
+alias codecamp="cd /mnt/phoenix/code/training/freecodecamp && cl"
+
+## Flask Server
+alias flask_server="cd /mnt/phoenix/code/flask_server && conda activate flask_server && cl"
+
+## Ajenti
+alias ajentigo="cd /mnt/phoenix/library/repos/ajenti && conda activate ajenti && cl"
