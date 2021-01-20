@@ -141,14 +141,11 @@ alias lstty="dmesg | grep tty"
 ###################################################
 
 ## Script directory jumps; these will only work if you have the same file structure as me, but you can update the directory to something that exists on your system.
-<<<<<<< HEAD
 alias scriptmode="cd /mnt/phoenix/code/scripts && clear && ls -lah"
 alias bashscript="cd /mnt/phoenix/code/scripts/bash && clear && ls -lah"
 alias greet="/mnt/phoenix/code/scripts/greetings && clear && ls -lah"
-=======
 alias scriptmode="cd /home/code/scripts && cl"
 alias bashscript="cd ~/code/scripts/bash && cl"
->>>>>>> 7d1f56b7dc6fc5efbe65956efda2cf25c32af693
 
 ## Code Mode (no vm)
 alias codemode="cd /mnt/phoenix/code && clear && ls -lah"
@@ -163,11 +160,8 @@ alias jupytergo="cd /mnt/phoenix/library/writing/jupyter-Notebooks && conda acti
 alias pytask="cd /mnt/phoenix/code/apps/pytask && conda activate pytask_env && clear && ls -lah"
 
 ### Library
-<<<<<<< HEAD
 alias lib="cd /mnt/phoenix/library"
-=======
 alias lib="cd ~/library"
->>>>>>> 7d1f56b7dc6fc5efbe65956efda2cf25c32af693
 
 ### Jump to my git repos
 alias repos="cd /mnt/phoenix/library/repos && clear && ls -lah"
