@@ -45,6 +45,9 @@ alias mkenv="conda create -n $1"
 # Example: `mkenv fluffernuffer` creates a base environment called fluffernuffer.
 # Example 2: `mkenv fluffernuffer python=3.8 Django` creates fluffernuffer & installs py3.8 + Django.
 
+# Revert conda env to initial packages
+alias conda0="conda install --revision 0"
+
 #------------------------
 
 ## Docker
