@@ -1,15 +1,11 @@
-######################################################################################################
-### Append this to your existing ~/.bash_aliases file; create one in your home directory if needed ###
-######################################################################################################
-
-# SETUP & CUSTOMIZATION # 
-
-# Check this repo's scripts folder for some handy install scripts. Please note these scripts assume you're using an Ubuntu-based distro. 
-
-#------------------------
+# BEGIN bash-magic 
 
 
-# MISC TIMESAVERS #
+# TIMESAVERS
+
+# TODO: Categorize these commands into categories
+# TODO: Expand Comments
+# TODO: Make this easier for others to understand and use
 
 # Reload your bash terminal without having to close/open a window
 alias src="source ~/.bashrc"
@@ -19,7 +15,7 @@ alias bashmod="nano ~/.bashrc"
 
 # append to bashrc
 alias bashadd="echo $1 >> ~/.bashrc"
-# Example Usage (:
+# Example:
 # bashadd "line to append to ~/.bashrc"
 
 # Edit this file
@@ -281,3 +277,5 @@ alias fullstack="xdg-open https://www.fullstackpython.com/best-python-videos.htm
 
 # Google Firebase
 alias firebase="xdg-open https://console.firebase.google.com" 
+
+# END bash-magic
