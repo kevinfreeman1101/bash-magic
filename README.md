@@ -1,65 +1,14 @@
 # About this Repository
 
-The programmer's mantra "Don't Repeat Yourself" inspired this repo which is currently filled with quick scripts I use to reduce keystrokes in my Bash terminal.
+Thinking about the programmer's mantra "Don't Repeat Yourself" convinced me to start making bash aliases for as many repetetive tasks as possible.
 
-without issue, but has only been tested in Ubuntu 18, Ubuntu 20, and Zorin 15
-
-## Requirements
-
-1. Bash
-1. Preference for minimizing keystrokes wherever possible
-
-## Optional
-
-1. Dark sunglasses
-
-## Before You Install
-
-bash-magic works well for me when using Ubuntu 18 & 20, Zorin, and similar (Debian-based) distros. It should work without issue in many non-Debian flavors, but it's possible that your shell looks elsewhere for its aliases. If you're not sure where to copy/append this repo's `~/.bash_aliases`, try appending to your `~/.bashrc` file and reloading bash a second time.
-
-Quickly test whether bash-magic is working by telling bash to update+upgrade your apt package manager.
-
-```console
-[user@domain]$ up
-```
-
-## Instructions
-
-If you already have a `~/.bash_aliases` file, you can add bash-magic to it with
-
-```console
-[user@domain]$ cat .bash_aliases >> ~/.bash_aliases
-```
-
-## 1. Clone bash-magic
-
-```console
-[user@domain]$ git clone https://github.com/kevinfreeman1101/bash-magic.git
-```
-
-## 2. Copy `.bash_aliases` to Your Home Directory
-
-```console
-[user@domain]$ cp bash-magic/.bash_aliases ~
-```
-
-## 3. Reload Your Terminal
-
-```console
-[user@domain]$ source ~/.bashrc
-```
-
-...from this point onward, you can accomplish the same task with:
-
-```console
-[user@domain]$ src
-```
+These aliases have performed nicely in Ubuntu 18, Ubuntu 20, and Zorin 15. These instructions were were written with those systems in mind; please use caution and read these instructions entirely before making any changes to your system files.
 
 ## Why Use bash-magic?
 
-bash-magic reduces keystrokes for all sorts of taks that normally take precious seconds (or even decaseconds!) to hammer out. This is currently geared toward my own common tasks, but will be expanded to include others as dev time allows.
+bash-magic reduces keystrokes for tasks that would otherwise take precious seconds (or even decaseconds!) to accomplish. This repo is currently geared toward reducing time spent on my own tasks, but will expand to reduce command sets for many stack layers as development time allows.
 
-bash-magic includes aliases that reduce command sets for common operations in:
+bash-magic currently features one or more time-saving aliases for common tasks in:
 
 | bash                  | django                  | docker         |
 |-----------------------|-------------------------|----------------|
@@ -67,7 +16,7 @@ bash-magic includes aliases that reduce command sets for common operations in:
 | micropython           | python3                 | conda/anaconda |
 | raspberry pi projects | python .net development | more to come   |
 
-For example, I used to type this before getting ot work on my website:
+For example, I used to type this before getting to work on my website:
 
 ```console
 cd /home/<some-old-user-name>/code/kfdev
@@ -85,15 +34,53 @@ kfdev
 
 Compounded over many sessions, this is likely to add up to quite a lot of time!
 
-## Quick Find
+## !! Warning !!
 
-If you can't remember an alias, but you do remember some part of its content, use `alsfind` to quickly print out matching lines from your `.bash_aliases`. For instance, if I can't remember which alias loads up Spacy in jupyter lab, I can quickly find all lines containing spacy (case insensitive) by typing:
+bash-magic should be appended to your system's `.bash_aliases` or `~/.bashrc` file (one or the other; not both!). If these files already exist in your home directory, make backup copies before proceeding further. Do not overwrite existing content in those preexisting files unless you are certain of outcomes or willing to risk boot failure.
+
+## Requirements
+
+1. Bash
+1. Preference for minimizing keystrokes wherever possible
+
+## Installation
+
+### Ubuntu-based (Debian) Operating Systems
+
+Clone this repo to your local environment with:
 
 ```console
-[user@domain]$ alsfind jupyter
-
-```output
-## Spacy
-alias spacygo="cd /mnt/Egg/code/spacy && conda activate spacy && jupyter lab ."
+[user@domain]$ git clone https://github.com/kevinfreeman1101/bash-magic.git
 ```
 
+If `~/.bash_aliases` already exists in your home directory, append bash-magic aliases to the existing file; otherwise create it:
+
+```console
+[user@domain]$ cat bash-magic/.bash_aliases >> ~/.bash_aliases
+```
+
+#### Reload Your Terminal
+
+```console
+[user@domain]$ source ~/.bashrc
+```
+
+...from this point onward, bash-magic enables reload using this command:
+
+```console
+[user@domain]$ src
+```
+
+### Windows
+
+Windows users can utilize bash-magic via the Windows Subsystem for Linux ([WSL/WSL2](https://docs.microsoft.com/en-us/windows/wsl/install-win10)) using Ubuntu and similar Debian-based distros. Functionality has not been tested in those environments.
+
+### MacOS
+
+Functionality has not been tested for MacOS, but this should do the trick. 
+
+If `~/.bashrc` already exists in your home directory, append bash-magic aliases to the existing file; otherwise create it:
+
+```console
+[user@domain]$ cat bash-magic/.bash_aliases >> ~/.bashrc
+```

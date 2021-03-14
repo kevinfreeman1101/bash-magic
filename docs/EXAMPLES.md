@@ -1,6 +1,18 @@
-# Examples
+# A Few Examples
 
 See [.bash_aliases](.bash_aliases) to view the full set of available aliases.
+
+## Quick Find
+
+If you can't remember an alias, but you do remember some part of its content, use `alsfind` to quickly print out matching lines from your `.bash_aliases`. For instance, if I can't remember which alias loads up Spacy in jupyter lab, I can quickly find all lines containing spacy (case insensitive) by typing:
+
+```console
+[user@domain]$ alsfind jupyter
+
+```output
+## Spacy
+alias spacygo="cd /mnt/Egg/code/spacy && conda activate spacy && jupyter lab ."
+```
 
 ### Update & Upgrade apt
 

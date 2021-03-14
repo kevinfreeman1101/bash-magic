@@ -1,13 +1,12 @@
-# BEGIN bash-magic 
+# BEGIN bash-magic
 
+# TODO: Categorize these aliases
+# TODO: Expand Alias Comments
+# TODO: Complete basic documentation
 
 # TIMESAVERS
 
-# TODO: Categorize these commands into categories
-# TODO: Expand Comments
-# TODO: Make this easier for others to understand and use
-
-# Reload your bash terminal without having to close/open a window
+# Reload your bash environment without having to close/open a new shell
 alias src="source ~/.bashrc"
 
 # open ~/.bashrc with nano
@@ -21,119 +20,111 @@ alias bashadd="echo $1 >> ~/.bashrc"
 # Edit this file
 alias alsmod="nano ~/.bash_aliases"
 
-# Update + Upgrade apt & enter "yes" when asked to proceed
+# APT
+
+## Standard usage
 alias up="sudo apt update && sudo apt upgrade -y"
 
+## Full Distribution Upgrade
 alias updist="sudo apt update && sudo apt upgrade -y && sudo apt-get dist-upgrade -y"
+
+## Diagnose package holds
 alias aptholds="dpkg --get-selections | grep hold"
+
+##
 alias aptit="sudo apt install"
-alias aptfind="apt search"
+##Example:
+##[user@]
 
-#------------------------
+# CONDA/ANACONDA
 
-# CONDA/ANACONDA #
-
-# Upgrade conda
+## Upgrade conda
 alias condup='conda upgrade conda -y'
 
-# Create a new conda virtual environment (after typing `mkenv`, enter a space followed by the environments new name)
+## Create a new conda virtual environment (after typing `mkenv`, enter a space followed by the environments new name)
 alias mkenv="conda create -n $1"
-# Example: `mkenv fluffernuffer` creates a base environment called fluffernuffer.
-# Example 2: `mkenv fluffernuffer python=3.8 Django` creates fluffernuffer & installs py3.8 + Django.
+## Example: `mkenv fluffernuffer` creates a base environment called fluffernuffer.
+## Example 2: `mkenv fluffernuffer python=3.8 Django` creates fluffernuffer & installs py3.8 + Django.
 
-# Revert conda env to initial packages
+## Revert conda env to initial packages
 alias conda0="conda install --revision 0"
 
-#------------------------
+# Docker, docker-compose, docker-machine
+## ...since I frequently forget to call sudo for docker
+alias docker="sudo docker"
 
-## Docker
-### ...since I frequently forget to use docker as a superuser, but don't want to sabotage my security
-alias docker="sudo docker" 
+## Start a Docker postgres instance
+alias docker-postgres="echo 'docker run --name $1 -e POSTGRES_PASSWORD=$2 -d postgres'"
+## Example usage:
+## docker-postgres <container_name> <postgres_pass>
+## Example 2:
+## docker-postgres kevin_dev sUPPer$ECRETpa$$w0rd
+
+## Interactive docker-postgres
+## alias docker-psql="echo 'docker run -it --rm --network some-network postgres psql -h some-postgres -U postgres'"
+alias docker-psql="echo 'docker run -it --rm --network $1 postgres psql -h $2 -U postgres'"
+
 
 ## docker-compose
 alias dc="docker-compose"
 
-# this prints out a quick reference from the terminal
+## Quick stack.yml printout
 alias dcpg="cat /mnt/phoenix/code/scripts/docker/stack.yml"
 
 ## Docker-machine
 alias dm='docker-machine'
 
-## Doctl
+
+# Doctl
 alias dc='doctl'
 
-## docker-postgres
-### Start a postgres instance
-alias docker-postgres="echo 'docker run --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -d postgres'"
 
-## Interactive docker-postgres
-alias docker-psql="echo 'docker run -it --rm --network some-network postgres psql -h some-postgres -U postgres'"
+# GIT
 
-#------------------------
-
-
-# GIT #
-
-# Create a git repository
+## Create a git repository
 alias gitwork='git init . && touch README && git add -A && git commit -m "working repo created" && git remote add origin $1 && git put -u origin master'
 
-# Clone an online repo
+## Clone an online repo
 alias cln="git clone"
 
-# Jump to git scripts
-alias gitscript="cd /mnt/phoenix/code/scripts/git && clear && lsz"
-
-#------------------------
+## Jump to git scripts
+alias gitscript="cd /mnt/phoenix/code/scripts/git && cl"
 
 
 # PYTHON #
 
-# This seems excessively lazy, but still reduces keystrokes
+## This seems excessively lazy, but still reduces keystrokes
 alias p3m="python3 -m"
 # Example: `p3m manage.py runserver` runs the django webserver
 
-
-## Django
-
-# Run the django webserver (assumes you are in the same directory as the manage.py file)
+## Run the django webserver (assumes you are in the same directory as the manage.py file)
 alias runsrv="python3 -m manage.py runserver"
 
-
-## Flask ##
-
-# Flask Server
+## Flask Server
 alias flask_server="cd /mnt/phoenix/code/flask_server && conda activate flask_server && cl"
 
-
-## Pip ##
-
-# Update pip
+## Update pip
 alias pipup="python3 -m pip install --upgrade pip"
 
-# Pip install (list packages to install after typing "pipit ")
+## Pip install (list packages to install after typing "pipit ")
 alias pipit="python3 -m pip install"
 
-#------------------------
 
+# SERVER MANAGEMENT
 
-# SERVER MANAGEMENT #
- 
-# Copy ssh keys to server; enter your server's login command after typing this in the terminal. I.E., `sshadd kfsrv`
+## Copy ssh keys to server (pass the keys as $1)
 alias sshadd="scp-copy-id $1"
 
-# Password Helpers
-
-# Generate a random alphanumeric string
+## Generate a random alphanumeric string
 alias simplepass="cat /mnt/phoenix/code/scripts/bash/bash.generate.random.alphanumeric.string.sh"
 
-# Prints out a random complex 16-digit password
+## Prints out a random complex 16-digit password
 alias passgen="cat /dev/urandom | tr -dc 'a-zA-Z0-9!@#*' | fold -w 16 | head -n 1"
 
 ## Print Linux Distribution + release info
 alias distro="lsb_release -a"
 
-
-# SERVER CONNECTS #
+# SSH Connects
 
 # Example Server "srv"
 # Change the text after the equal's sign below to your server username.
@@ -184,7 +175,7 @@ alias lstty="dmesg | grep tty"
 alias lsp="ls -lp"
 
 # ls = list directory contents
-# -F = classify objects with */=>@| to indicate type; 
+# -F = classify objects with */=>@| to indicate type;
 # -g = group directories first
 # -h = human readable file sizes
 # -L = when showing file information for a symbolic link, show information for the file the link references rather than for the link itself
@@ -207,13 +198,12 @@ alias alsfind="cat ~/.bash_aliases | grep -i $1"
 # Print server logins (and any other lines from ~/.bash_aliases that contain "srv")
 alias srvinfo="cat ~/.bash_aliases | grep ssh"
 
-#------------------------
-
 
 # JUMP TO WORKING DIR; DO SOMETHING USEFUL #
-# These are included as generic examples of my directory jumps
+# These are included as generic examples of my quick jumps to various directories. Some activate virtual envs; others just navigate
+# to a working folder and list contents
 
-# Script jumps. Change the path below to something that exists on your system.
+# Script jumps. To try these on your system, replace these paths with ones on your system.
 
 # Go to scripts dir, clear the screen, and list contents
 alias scriptmode="cd ~/code/scripts && clear && lsz"
@@ -246,36 +236,34 @@ alias esp32cam="cd /mnt/phoenix/code/esp32cam && conda activate esp32 && clear &
 ### Activate espressif-idf env
 alias idfenv='. /home/biggus-kickus/code/esp32cam/esp-idf/export.sh'
 
-#------------------------
 
-
-# OPEN A WEBSITE #
+# OPEN WEBSITES FROM TERMINAL
 
 # Free Code Camp
-alias freecodecamp="xdg-open https://www.freecodecamp.org/"
+alias freecodecamp="xdg-open https://www.freecodecamp.org/" # web
 
 # Brilliant.org
-alias brilliant="xdg-open https://brilliant.org"
+alias brilliant="xdg-open https://brilliant.org" # web
 
 # Paste to Markdown - paste html code to this page to generate the markdown equivalent
-alias p2md="xdg-open https://euangoddard.github.io/clipboard2markdown/"
+alias p2md="xdg-open https://euangoddard.github.io/clipboard2markdown/" # web
 
 # Talk Python training & courses
-alias talkpy="xdg-open https://training.talkpython.fm/account/"
+alias talkpy="xdg-open https://training.talkpython.fm/account/" # web
 
 # DataCrunch.io login page
-alias datacrunch="xdg-open https://cloud.datacrunch.io/signin"
+alias datacrunch="xdg-open https://cloud.datacrunch.io/signin" # web
 
 # Google App Engine
-alias appengine="xdg-open https://cloud.google.com/appengine/"
+alias appengine="xdg-open https://cloud.google.com/appengine/" # web
 
 # Gitlab
-alias gitlab="xdg-open https://gitlab.com/users/sign_in"
+alias gitlab="xdg-open https://gitlab.com/users/sign_in" # web
 
 # Full Stack Python Videos
-alias fullstack="xdg-open https://www.fullstackpython.com/best-python-videos.html"
+alias fullstack="xdg-open https://www.fullstackpython.com/best-python-videos.html" # web
 
 # Google Firebase
-alias firebase="xdg-open https://console.firebase.google.com" 
+alias firebase="xdg-open https://console.firebase.google.com" # web
 
 # END bash-magic
